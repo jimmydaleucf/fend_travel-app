@@ -1,0 +1,28 @@
+{
+  "name": "Travel App",
+  "jest": {
+    "verbose": true,
+    "testEnvironment": "jsdom"
+  },
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "start": "node src/server/server.js",
+    "build-prod": "webpack --config webpack.prod.js",
+    "build-dev": "webpack-dev-server  --config webpack.dev.js --open && node src/server/server.js"
+  },
+  "keywords": [],
+  "author": "Jimmy Dale",
+  "license": "ISC",
+  "description": "Front End Developer Nanodegree Capstone Project",
+  "dependencies": {
+    "body-parser": "^1.19.1",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "mime-db": "^1.51.0",
+    "webpack": "^4.46.0",
+    "webpack-cli": "^4.9.1"
+  }
+}

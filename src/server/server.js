@@ -38,7 +38,7 @@ function getData(req, res) {
 
 // Post Route
 app.post('/addData', addData);
-console.log("POST")
+// console.log("POST")
 
 function addData(req,res) {
     // console.log(req.body);
