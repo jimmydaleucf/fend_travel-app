@@ -18,7 +18,12 @@ app.use(bodyParser.json());
 // Cors for cross origin allowance
 app.use(cors());
 // Initialize the main project folder
-app.use(express.static("website"));
+app.use(express.static("../client/views"));
+
+app.get("/", function (req, res) {
+  res.sendFile("dist/index.html");
+  // res.sendFile(path.resolve('src/client/views/index.html')) {{removing as we now need to reference the dist folder file}}
+});
 
 // Spin up the server
 const port = 5000;
@@ -33,6 +38,7 @@ app.get("/all", getData)
 
 // Callback function to complete GET '/all'//
 function getData(req, res) {
+  console.log('GET')
   res.send(projectData);
 };
 
