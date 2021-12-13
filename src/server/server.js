@@ -18,7 +18,7 @@ app.use(bodyParser.json());
 // Cors for cross origin allowance
 app.use(cors());
 // Initialize the main project folder
-app.use(express.static("../client/views"));
+app.use(express.static("dist"));
 
 app.get("/", function (req, res) {
   res.sendFile("dist/index.html");
@@ -26,7 +26,7 @@ app.get("/", function (req, res) {
 });
 
 // Spin up the server
-const port = 5000;
+const port = 8081;
 const server = app.listen(port, listening);
 function listening() {
   console.log(`server up and running on localhost:${port}`); // Callback to debug//
