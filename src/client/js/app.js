@@ -75,3 +75,5 @@ const updateUI= async(url ='')=>{
 let d = new Date();
 const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 let newDate = months[d.getMonth()]+'.'+ d.getDate()+'.'+ d.getFullYear();
+
+export {processInfo}
