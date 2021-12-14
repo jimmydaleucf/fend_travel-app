@@ -1,8 +1,54 @@
 body{
-    // background-color: lightseagreen;
+    background-color: lightseagreen;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    color: white;
 }
 .container{
     border-width: 1px;
     border-color: black;
     border-style: solid;
+    display: flex;
+    flex-direction: column;
+    padding: 0.5em;
+}
+h1{
+    color:white;
+    margin: .5em;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    font-size: 3em;
+}
+label{
+    font-weight: 500;
+    color: white;
+
+}
+
+#destination{
+    border-radius: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    display: flex;
+    color:grey
+    
+}
+#user-input{
+    display: flex;
+    align-items: center;
+}
+#form-submit{
+    display: flex;
+    flex-direction: column;
+}
+.form-txt{
+    font-family:'Roboto', sans-serif ;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+#departure-date{
+    color:grey
+}
+#submit{
+    border-radius: 7px;
 }

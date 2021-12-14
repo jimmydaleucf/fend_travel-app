@@ -5,3 +5,4 @@ import { testFuntion } from "./js/testFunction";
 
 
 import './styles/main.scss'
+import'./styles/fonts.scss'
