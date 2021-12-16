@@ -1,5 +1,6 @@
 // Setup empty JS object to act as endpoint for all routes
-projectData = {}
+coordData = {}
+projectData ={}
 
 // Express to run server and routes
 const express = require("express");
@@ -34,13 +35,13 @@ function listening() {
 }
 
 // Initialize all route with a callback function//
-app.get("/all", getData)
+app.get("/getCoords", getData)
 
 
 // Callback function to complete GET '/all'//
 function getData(req, res) {
   console.log('GET')
-  res.send(projectData);
+  res.send(coordData);
 };
 
 // Post Route
@@ -56,7 +57,7 @@ function addData(req,res) {
     
     console.log(newEntry);
 
-    projectData = newEntry
-    res.send(projectData)
-    // console.log(projectData)
+    coordData = newEntry
+    res.send(coordData)
+    // console.log(coordData)
 }
