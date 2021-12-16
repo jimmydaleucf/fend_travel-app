@@ -17,10 +17,12 @@ function processInfo(e) {
   getCityCoords(baseURL, destination, geonames_user_key) //get the coords of the destination//
     .then(function (data) {
         console.log(data);
+        console.log(data.geonames[0].lng);
+        console.log(data.geonames[1].lat);
       //then post the data to the server//
       postData("http://localhost:8081/addData", {
-        lon: data.lng,
-        lat: data.lat,
+        lon: data.geonames[0].lng,
+        lat: data.geonames[1].lat,
       });
     //   updateUI(); //this runs and updates the UI!//
     });

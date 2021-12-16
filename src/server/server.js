@@ -50,8 +50,8 @@ app.post('/addData', addData);
 function addData(req,res) {
     // console.log(req.body);
     newEntry = {
-      lon: data.lng,
-      lat: data.lat
+      lon: req.body.lon,
+      lat: req.body.lat
     };  
     
     console.log(newEntry);
