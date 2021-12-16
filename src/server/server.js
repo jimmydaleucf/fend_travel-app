@@ -20,6 +20,7 @@ app.use(cors());
 // Initialize the main project folder
 app.use(express.static("dist"));
 
+
 app.get("/", function (req, res) {
   res.sendFile("dist/index.html");
   // res.sendFile(path.resolve('src/client/views/index.html')) //{{removing as we now need to reference the dist folder file}}
@@ -48,11 +49,10 @@ app.post('/addData', addData);
 
 function addData(req,res) {
     // console.log(req.body);
-    newEntry= {
-      temp: req.body.temp,
-      date: req.body.date,
-      userInput: req.body.input
-    }  
+    newEntry = {
+      lon: data.lng,
+      lat: data.lat
+    };  
     
     console.log(newEntry);
 
