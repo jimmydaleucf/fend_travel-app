@@ -20,7 +20,7 @@ function processInfo(e) {
         console.log(data.geonames[0].lng);
         console.log(data.geonames[1].lat);
       //then post the data to the server//
-      postData("http://localhost:8081/addData", {
+      postData("http://localhost:8081/addCoords", {
         lon: data.geonames[0].lng,
         lat: data.geonames[1].lat,
       });

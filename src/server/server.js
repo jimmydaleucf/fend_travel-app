@@ -44,7 +44,7 @@ function getData(req, res) {
 };
 
 // Post Route
-app.post('/addData', addData);
+app.post('/addCoords', addData);
 // console.log("POST")
 
 function addData(req,res) {
