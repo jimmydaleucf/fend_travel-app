@@ -58,9 +58,7 @@ function addCoords(req,res) {
       lat: req.body.lat,
       country: req.body.country
     };  
-    
     console.log(newEntry);
-
     coordData = newEntry
     res.send(coordData)
     // console.log(coordData)

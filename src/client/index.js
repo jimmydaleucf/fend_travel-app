@@ -1,4 +1,3 @@
-import { testFuntion } from "./js/testFunction";
 import { processInfo } from "./js/app.js";
 
 // console.log(testFuntion)
@@ -11,4 +10,4 @@ import'./styles/fonts.scss'
 
 // document.getElementById("submit").addEventListener("click", processInfo);
 
-export {testFuntion, processInfo}
+export { processInfo}

@@ -2,48 +2,49 @@
 
 let baseURL = "http://api.geonames.org/searchJSON?q=";
 let baseURL2 = "https://api.weatherbit.io/v2.0/current?units=I&lat="
+let baseUrlFuture = "https://api.weatherbit.io/v2.0/forecast/daily?"
 const geonames_user_key = "jimmydaleucf";
 const weatherApiKEY= "8ae2e8451ba04aee8cf20f2edb60ba54"
 
 
 const destination = document.getElementById("destination").value;
 
-//Once a click occurs, this function will call and get the weather info from the API//
+//Once a click occurs, this function will call and get the coords for the destination//
 function processInfo(e) {
   e.preventDefault();
-  const todayDate = new Date();
-  let text= todayDate.toISOString();
-  let shortDate = text.slice(0,10)
+  const todayDate = new Date();//creates a new date with today's date//
+  let text= todayDate.toISOString();//converts that date variable into a string
+  let shortDate = text.slice(0,10) //shortens the date to only YYYY/MM/DD//
   console.log('todays date');
   console.log(shortDate);
-  const destination = document.getElementById("destination").value;
-  const date = document.getElementById("departure-date").value;
+  const destination = document.getElementById("destination").value;//grabs the destination from the user input//
+  const tripDate = document.getElementById("departure-date").value;//grabs the departure date entered by user//
   console.log('Trip Date');
-  console.log(date);
-  // console.log(destination);
-//   const travelDate = document.getElementById("departureDate").value;
-  getCityCoords(baseURL, destination, geonames_user_key) //get the coords of the destination//
+  console.log(tripDate);
+  getCityCoords(baseURL, destination, geonames_user_key) //get the coords of the destination to be used in the Weather API//
+    //regardless of when trip is, all of the above needs to be run//
     .then(function (data) {
-        const longitude = data.geonames[0].lng;
-        const lattitude = data.geonames[0].lat;
-        getCurrentWeather(longitude, lattitude)
-        .then(function(json){
+      const longitude = data.geonames[0].lng;
+      const lattitude = data.geonames[0].lat;
+      //this is where the if/elseif needs to go//
+
+      getCurrentWeather(longitude, lattitude) //calls weather API
+        .then(function (json) {
           postData("http://localhost:8081/addData", {
+            //posts the weather data received to the server
             description: json.data[0].weather.description,
             sunrise: json.data[0].sunrise,
             sunset: json.data[0].sunset,
             icon: json.data[0].weather.icon,
             temp: json.data[0].temp,
           });
-        })
-        
-    
+        });
     });
 }
 
 const getCityCoords = async (baseURL, destination,  geonames_user_key) => {
   const res = await fetch(
-    baseURL + destination+"&maxRows=10&username=" + geonames_user_key
+    baseURL + destination+"&maxRows=1&username=" + geonames_user_key
   );
   // console.log(res);
   try {
@@ -102,5 +103,21 @@ const getCurrentWeather = async (longitude, lattitude) => {
       console.log('error', error);
     }
 }
+
+const getFutureWeather = async (longitude, lattitude) => {
+  console.log(longitude);
+  console.log(lattitude);
+  const res = await fetch(
+    baseUrlFuture + lattitude + "&lon=" + longitude + "&key=" + weatherApiKEY
+  );
+  try {
+    const json = await res.json();
+    console.log("weatherJSONgenerated");
+    console.log(json);
+    return json;
+  } catch (error) {
+    console.log("error", error);
+  }
+};
 
 export { processInfo}
