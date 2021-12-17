@@ -1,7 +1,7 @@
 /* Global Variables */
 
 let baseURL = "http://api.geonames.org/searchJSON?q=";
-let baseURL2 = "https://api.weatherbit.io/v2.0/current?lat="
+let baseURL2 = "https://api.weatherbit.io/v2.0/current?units=I&lat="
 const geonames_user_key = "jimmydaleucf";
 const weatherApiKEY= "8ae2e8451ba04aee8cf20f2edb60ba54"
 
@@ -26,20 +26,18 @@ function processInfo(e) {
     .then(function (data) {
         const longitude = data.geonames[0].lng;
         const lattitude = data.geonames[0].lat;
-        getWeather(longitude, lattitude);
-        postData("http://localhost:8081/addData", {
-          test: "test"
-        });
-                  
-        // getWeather();
-
-      //then post the data to the server//
-      // postData("http://localhost:8081/addCoords", {
-      //   lon: data.geonames[0].lng,
-      //   lat: data.geonames[1].lat,
-      //   country: data.geonames[1].countryName
-      // });
-    //   updateUI(); //this runs and updates the UI!//
+        getCurrentWeather(longitude, lattitude)
+        .then(function(json){
+          postData("http://localhost:8081/addData", {
+            description: json.data[0].weather.description,
+            sunrise: json.data[0].sunrise,
+            sunset: json.data[0].sunset,
+            icon: json.data[0].weather.icon,
+            temp: json.data[0].temp,
+          });
+        })
+        
+    
     });
 }
 
@@ -89,7 +87,7 @@ const postData = async (url = "", data = {}) => {
 //   }
 // };
 
-const getWeather = async (longitude, lattitude) => {
+const getCurrentWeather = async (longitude, lattitude) => {
   console.log(longitude);
   console.log(lattitude);
   const res = await fetch(
