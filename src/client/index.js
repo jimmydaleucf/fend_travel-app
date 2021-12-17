@@ -1,5 +1,5 @@
 import { testFuntion } from "./js/testFunction";
-import { processInfo } from "./js/getCityCoords";
+import { processInfo } from "./js/app.js";
 
 // console.log(testFuntion)
 // alert('HELLO WORLD')

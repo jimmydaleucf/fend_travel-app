@@ -1,6 +1,4 @@
-// Setup empty JS object to act as endpoint for all routes
-coordData = {}
-projectData ={}
+
 
 // Express to run server and routes
 const express = require("express");
@@ -34,6 +32,10 @@ function listening() {
   console.log(`server up and running on localhost:${port}`); // Callback to debug//
 }
 
+// Setup empty JS object to act as endpoint for all routes
+coordData = {}
+projectData ={}
+
 // Initialize all route with a callback function//
 app.get("/getCoords", getData)
 
@@ -44,11 +46,12 @@ function getData(req, res) {
   res.send(coordData);
 };
 
-// Post Route
-app.post('/addCoords', addData);
+// Post Routes
+app.post('/addCoords', addCoords);
+app.post('/addData', addData);
 // console.log("POST")
 
-function addData(req,res) {
+function addCoords(req,res) {
     // console.log(req.body);
     newEntry = {
       lon: req.body.lon,
@@ -61,4 +64,13 @@ function addData(req,res) {
     coordData = newEntry
     res.send(coordData)
     // console.log(coordData)
+}
+
+function addData(req,res){
+  newData={
+    test:req.body.test
+  }
+  console.log(newData);
+  projectData = newData; 
+  res.send(newData)
 }
