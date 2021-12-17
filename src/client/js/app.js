@@ -25,7 +25,7 @@ function processInfo(e) {
   getCityCoords(baseURL, destination, geonames_user_key) //get the coords of the destination//
     .then(function (data) {
         const longitude = data.geonames[0].lng;
-        const lattitude = data.geonames[1].lat;
+        const lattitude = data.geonames[0].lat;
         getWeather(longitude, lattitude);
         postData("http://localhost:8081/addData", {
           test: "test"
@@ -50,7 +50,7 @@ const getCityCoords = async (baseURL, destination,  geonames_user_key) => {
   // console.log(res);
   try {
     const data = await res.json();
-    // console.log(data);
+    console.log(data);
     return data;
   } catch (error) {
     console.log("error", error);
@@ -90,6 +90,8 @@ const postData = async (url = "", data = {}) => {
 // };
 
 const getWeather = async (longitude, lattitude) => {
+  console.log(longitude);
+  console.log(lattitude);
   const res = await fetch(
     baseURL2 + lattitude + "&lon=" + longitude + "&key=" + weatherApiKEY
   );
