@@ -52,7 +52,8 @@ function addData(req,res) {
     // console.log(req.body);
     newEntry = {
       lon: req.body.lon,
-      lat: req.body.lat
+      lat: req.body.lat,
+      country: req.body.country
     };  
     
     console.log(newEntry);
