@@ -6,6 +6,16 @@ body{
     text-shadow: 1px 1px #124b4f;
 
 }
+.box{
+    display: flex;
+    padding:1em
+}
+#weather-card.box{
+    display: flex;
+    flex-direction: column;
+    margin:5px;
+    padding:5px;
+}
 .container{ 
     display: flex;
     flex-direction: column;
@@ -21,12 +31,16 @@ h1{
     font-size: 3em;
     text-shadow: 4px 4px #124b4f;
 }
+h3{
+    margin:.25em;
+}
 label{
     font-weight: 500;
     color: white;
 
 }
-
+#countdown{
+    text-align: center;}
 #destination{
     border-radius: 5px;
     margin-top: 5px;
@@ -53,4 +67,7 @@ label{
 }
 #submit{
     border-radius: 7px;
+}
+#weather-details{
+    padding: 1em;
 }

@@ -19,9 +19,10 @@ function processInfo(e) {
       const longitude = data.geonames[0].lng;
       const lattitude = data.geonames[0].lat;
       const dateDiff = Client.calcDate(tripDate, shortDate);
-      const roundedDate = Math.ceil(dateDiff);
-      console.log(roundedDate);
-      document.getElementById('countdown').innerText= "Your trip is in "+roundedDate+" days!"
+      console.log(dateDiff);
+      Client.countdown(dateDiff);
+    //   const roundedDate = Math.ceil(dateDiff);
+    //   console.log(roundedDate);
       if (dateDiff >7) {
         console.log("Grabbing future weather conditions");
         Client.getFutureWeather(longitude,lattitude)
@@ -32,10 +33,11 @@ function processInfo(e) {
               icon: json.data[15].weather.icon,
               temp: json.data[15].temp,
             });
+            document.getElementById('weather-h3').innerText="Typical Weather";
             Client.updateUI();
         });
       } else if (
-        dateDiff > -1 && dateDiff< 7) {
+        dateDiff > -1 && dateDiff<= 7) {
         console.log("Grabbing current weather conditions");
         Client.getCurrentWeather(longitude, lattitude) //calls weather API
           .then(function (json) {
@@ -45,6 +47,7 @@ function processInfo(e) {
               icon: json.data[0].weather.icon,
               temp: json.data[0].temp,
             });
+            document.getElementById("weather-h3").innerText = "Current Weather";
             Client.updateUI();
           });
 

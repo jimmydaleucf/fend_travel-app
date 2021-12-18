@@ -5,7 +5,8 @@ const calcDate = (tripDate, shortDate) => {
     // console.log("Printing TimeDiff")
     // console.log(timeDiff)
     const timeDiffDays = timeDiff/86400000;
-    return timeDiffDays
+    const roundedDate = Math.ceil(timeDiffDays);
+    return roundedDate
     // console.log(timeDiffDays);
     
 };
