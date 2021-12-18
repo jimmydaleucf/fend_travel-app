@@ -63,7 +63,7 @@ const getCityCoords = async (baseURL, destination,  geonames_user_key) => {
   // console.log(res);
   try {
     const data = await res.json();
-    console.log(data);
+    // console.log(data);
     return data;
   } catch (error) {
     console.log("error", error);
@@ -103,15 +103,15 @@ const postData = async (url = "", data = {}) => {
 // };
 
 const getCurrentWeather = async (longitude, lattitude) => {
-  console.log(longitude);
-  console.log(lattitude);
+//   console.log(longitude);
+//   console.log(lattitude);
   const res = await fetch(
     baseURL2 + lattitude + "&lon=" + longitude + "&key=" + weatherApiKEY
   );
     try {
       const json = await res.json();
-      console.log('weatherJSONgenerated');
-      console.log(json);
+    //   console.log('weatherJSONgenerated');
+    //   console.log(json);
       return json;
     }catch (error){
       console.log('error', error);

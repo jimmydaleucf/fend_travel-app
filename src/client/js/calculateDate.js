@@ -1,11 +1,11 @@
 const calcDate = (tripDate, shortDate) => {
-    console.log("Trip Date= " + tripDate);
-    console.log("Short Date= " + shortDate);
+    // console.log("Trip Date= " + tripDate);
+    // console.log("Short Date= " + shortDate);
     var timeDiff = tripDate - shortDate;
-    console.log("Printing TimeDiff")
-    console.log(timeDiff)
+    // console.log("Printing TimeDiff")
+    // console.log(timeDiff)
     const timeDiffDays = timeDiff/86400000;
-    console.log(timeDiffDays);
+    // console.log(timeDiffDays);
     if (timeDiffDays >7){
         console.log("Travel date is further than 7 days away");
         return true;
