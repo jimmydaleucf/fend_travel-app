@@ -17,31 +17,35 @@ function processInfo(e) {
   const todayDate = new Date();//creates a new date with today's date//
   let text= todayDate.toISOString();//converts that date variable into a string
   let shortDate = Date.parse(text) //shortens the date to only YYYY/MM/DD//
-  console.log('todays date');
-  console.log(shortDate);
+  // console.log('todays date');
+  // console.log(shortDate);
   const destination = document.getElementById("destination").value;//grabs the destination from the user input//
   const tripDate = Date.parse(document.getElementById("departure-date").value);//grabs the departure date entered by user//
-  console.log('Trip Date');
-  console.log(tripDate);
-  Client.calcDate(tripDate, shortDate);
+  // console.log('Trip Date');
+  // console.log(tripDate);
+  // Client.calcDate(tripDate, shortDate);
   getCityCoords(baseURL, destination, geonames_user_key) //get the coords of the destination to be used in the Weather API//
     //regardless of when trip is, all of the above needs to be run//
     .then(function (data) {
       const longitude = data.geonames[0].lng;
       const lattitude = data.geonames[0].lat;
       //this is where the if/elseif needs to go//
-
-      getCurrentWeather(longitude, lattitude) //calls weather API
-        .then(function (json) {
-          postData("http://localhost:8081/addData", {
-            //posts the weather data received to the server
-            description: json.data[0].weather.description,
-            sunrise: json.data[0].sunrise,
-            sunset: json.data[0].sunset,
-            icon: json.data[0].weather.icon,
-            temp: json.data[0].temp,
+      if (Client.calcDate(tripDate, shortDate) === true) {
+        console.log("Grabbing future weather conditions");
+      } else {
+        console.log("Grabbing current weather conditions")
+        getCurrentWeather(longitude, lattitude) //calls weather API
+          .then(function (json) {
+            postData("http://localhost:8081/addData", {
+              //posts the weather data received to the server
+              description: json.data[0].weather.description,
+              sunrise: json.data[0].sunrise,
+              sunset: json.data[0].sunset,
+              icon: json.data[0].weather.icon,
+              temp: json.data[0].temp,
+            });
           });
-        });
+      }
     });
 }
 

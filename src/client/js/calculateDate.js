@@ -1,6 +1,4 @@
 const calcDate = (tripDate, shortDate) => {
-    // var x = parseInt(tripDate)
-    // var y = parseInt(shortDate);
     console.log("Trip Date= " + tripDate);
     console.log("Short Date= " + shortDate);
     var timeDiff = tripDate - shortDate;
