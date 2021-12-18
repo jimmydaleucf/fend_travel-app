@@ -67,8 +67,6 @@ function addCoords(req,res) {
 function addData(req,res){
   newData = {
     description: req.body.description,
-    sunrise: req.body.sunrise,
-    sunset: req.body.sunset,
     icon: req.body.icon,
     temp: req.body.temp,
   };

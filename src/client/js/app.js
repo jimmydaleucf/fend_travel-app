@@ -4,7 +4,7 @@ import { calcDate } from "..";
 
 let baseURL = "http://api.geonames.org/searchJSON?q=";
 let baseURL2 = "https://api.weatherbit.io/v2.0/current?units=I&lat="
-let baseUrlFuture = "https://api.weatherbit.io/v2.0/forecast/daily?"
+let baseUrlFuture = "https://api.weatherbit.io/v2.0/forecast/daily?units=I&lat=";
 const geonames_user_key = "jimmydaleucf";
 const weatherApiKEY= "8ae2e8451ba04aee8cf20f2edb60ba54"
 
@@ -32,6 +32,17 @@ function processInfo(e) {
       //this is where the if/elseif needs to go//
       if (Client.calcDate(tripDate, shortDate) === true) {
         console.log("Grabbing future weather conditions");
+        getFutureWeather(longitude,lattitude)
+        .then(function (json){
+          postData("http://localhost:8081/addData", {
+              //posts the weather data received to the server
+              description: json.data[15].weather.description,
+              sunrise: json.data[15].sunrise,
+              sunset: json.data[15].sunset,
+              icon: json.data[15].weather.icon,
+              temp: json.data[15].temp,
+            });
+        });
       } else {
         console.log("Grabbing current weather conditions")
         getCurrentWeather(longitude, lattitude) //calls weather API
@@ -39,8 +50,6 @@ function processInfo(e) {
             postData("http://localhost:8081/addData", {
               //posts the weather data received to the server
               description: json.data[0].weather.description,
-              sunrise: json.data[0].sunrise,
-              sunset: json.data[0].sunset,
               icon: json.data[0].weather.icon,
               temp: json.data[0].temp,
             });
