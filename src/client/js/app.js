@@ -1,7 +1,5 @@
 /* Global Variables */
-let baseURL = "http://api.geonames.org/searchJSON?q=";
-const geonames_user_key = "jimmydaleucf";
-const destination = document.getElementById("destination").value;
+
 
 //Once a click occurs, this function will call and get the coords for the destination//
 function processInfo(e) {
@@ -47,17 +45,7 @@ function processInfo(e) {
     });
 }
 
-const getCityCoords = async (baseURL, destination,  geonames_user_key) => {
-  const res = await fetch(
-    baseURL + destination+"&maxRows=1&username=" + geonames_user_key
-  );
-  try {
-    const data = await res.json();
-    return data;
-  } catch (error) {
-    console.log("error", error);
-  }
-};
+
 
 
 
