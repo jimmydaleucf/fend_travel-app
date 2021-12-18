@@ -37,8 +37,6 @@ function processInfo(e) {
           postData("http://localhost:8081/addData", {
               //posts the weather data received to the server
               description: json.data[15].weather.description,
-              sunrise: json.data[15].sunrise,
-              sunset: json.data[15].sunset,
               icon: json.data[15].weather.icon,
               temp: json.data[15].temp,
             });
