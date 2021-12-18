@@ -1,5 +1,7 @@
 /* Global Variables */
 
+import { calcDate } from "..";
+
 let baseURL = "http://api.geonames.org/searchJSON?q=";
 let baseURL2 = "https://api.weatherbit.io/v2.0/current?units=I&lat="
 let baseUrlFuture = "https://api.weatherbit.io/v2.0/forecast/daily?"
@@ -14,13 +16,14 @@ function processInfo(e) {
   e.preventDefault();
   const todayDate = new Date();//creates a new date with today's date//
   let text= todayDate.toISOString();//converts that date variable into a string
-  let shortDate = text.slice(0,10) //shortens the date to only YYYY/MM/DD//
+  let shortDate = Date.parse(text) //shortens the date to only YYYY/MM/DD//
   console.log('todays date');
   console.log(shortDate);
   const destination = document.getElementById("destination").value;//grabs the destination from the user input//
-  const tripDate = document.getElementById("departure-date").value;//grabs the departure date entered by user//
+  const tripDate = Date.parse(document.getElementById("departure-date").value);//grabs the departure date entered by user//
   console.log('Trip Date');
   console.log(tripDate);
+  Client.calcDate(tripDate, shortDate);
   getCityCoords(baseURL, destination, geonames_user_key) //get the coords of the destination to be used in the Weather API//
     //regardless of when trip is, all of the above needs to be run//
     .then(function (data) {
