@@ -21,7 +21,7 @@ function processInfo(e) {
         console.log("Grabbing future weather conditions");
         Client.getFutureWeather(longitude,lattitude)
         .then(function (json){
-          postData("http://localhost:8081/addData", {
+          Client.postData("http://localhost:8081/addData", {
               //posts the weather data received to the server
               description: json.data[15].weather.description,
               icon: json.data[15].weather.icon,
@@ -34,7 +34,7 @@ function processInfo(e) {
         console.log("Grabbing current weather conditions");
         Client.getCurrentWeather(longitude, lattitude) //calls weather API
           .then(function (json) {
-            postData("http://localhost:8081/addData", {
+            Client.postData("http://localhost:8081/addData", {
               //posts the weather data received to the server
               description: json.data[0].weather.description,
               icon: json.data[0].weather.icon,
@@ -59,26 +59,7 @@ const getCityCoords = async (baseURL, destination,  geonames_user_key) => {
   }
 };
 
-const postData = async (url = "", data = {}) => {
-  // console.log("POST");
-  const response = await fetch(url, {
-    method: "POST",
-    credentials: "same-origin",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data),
-  });
-  // console.log(data);
 
-  try {
-    const newData = await response.json();
-    console.log(newData);
-    return newData;
-  } catch (error) {
-    console.log("error", error);
-  }
-};
 
 
 export { processInfo}

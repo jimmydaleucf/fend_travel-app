@@ -16,8 +16,8 @@ const getCurrentWeather = async (longitude, lattitude) => {
 };
 
 const getFutureWeather = async (longitude, lattitude) => {
-  console.log(longitude);
-  console.log(lattitude);
+//   console.log(longitude);
+//   console.log(lattitude);
   const res = await fetch(
     baseUrlFuture + lattitude + "&lon=" + longitude + "&key=" + weatherApiKEY
   );
