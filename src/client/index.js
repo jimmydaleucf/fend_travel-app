@@ -3,6 +3,7 @@ import { calcDate } from "./js/calculateDate.js";
 import { getCurrentWeather, getFutureWeather } from "./js/weatherApiCalls.js";
 import { postData } from "./js/postData.js";
 import { getCityCoords } from "./js/getCoords.js";
+import { updateUI } from "./js/updateUI.js";
 
 document.getElementById("submit").addEventListener("click", processInfo);
 
@@ -17,5 +18,6 @@ export {
   getFutureWeather,
   getCurrentWeather,
   postData,
-  getCityCoords
+  getCityCoords, 
+  updateUI
 };

@@ -37,40 +37,44 @@ coordData = {}
 projectData ={}
 
 // Initialize all route with a callback function//
-app.get("/getCoords", getData)
+// app.get("/getCoords", getData)
+app.get("/all", getAll)
 
 
-// Callback function to complete GET '/all'//
-function getData(req, res) {
+
+// Callback function to complete GET '/getAll'//
+function getAll(req, res) {
   console.log('GET')
-  res.send(coordData);
+  res.send(projectData);
 };
 
 // Post Routes
-app.post('/addCoords', addCoords);
 app.post('/addData', addData);
-// console.log("POST")
 
-function addCoords(req,res) {
-    // console.log(req.body);
-    newEntry = {
-      lon: req.body.lon,
-      lat: req.body.lat,
-      country: req.body.country
-    };  
-    console.log(newEntry);
-    coordData = newEntry
-    res.send(coordData)
-    // console.log(coordData)
-}
-
-function addData(req,res){
+function addData(req, res) {
   newData = {
     description: req.body.description,
     icon: req.body.icon,
     temp: req.body.temp,
   };
+  projectData = newData;
   console.log(newData);
-  projectData = newData; 
-  res.send(newData)
+  res.send(projectData);
 }
+
+// app.post('/addCoords', addCoords);
+
+// console.log("POST")
+
+// function addCoords(req,res) {
+//     // console.log(req.body);
+//     newEntry = {
+//       lon: req.body.lon,
+//       lat: req.body.lat,
+//       country: req.body.country
+//     };  
+//     console.log(newEntry);
+//     coordData = newEntry
+//     res.send(coordData)
+//     // console.log(coordData)
+// }
