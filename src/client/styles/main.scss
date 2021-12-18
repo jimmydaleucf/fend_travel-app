@@ -8,7 +8,7 @@ body{
 }
 .box{
     display: flex;
-    padding:1em
+    padding:.5em
 }
 #weather-card.box{
     display: flex;
@@ -31,8 +31,12 @@ h1{
     font-size: 3em;
     text-shadow: 4px 4px #124b4f;
 }
-h3{
-    margin:.25em;
+h2{
+    margin:0px
+}
+h3{ 
+    margin:3px;
+    padding:3px;
 }
 label{
     font-weight: 500;
