@@ -58,7 +58,7 @@ function listening() {
 }
 
 // Setup empty JS object to act as endpoint for all routes
-coordData = {}
+// coordData = {}
 projectData ={}
 
 // Initialize all route with a callback function//
