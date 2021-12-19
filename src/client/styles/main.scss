@@ -6,13 +6,31 @@ body{
     text-shadow: 1px 1px #124b4f;
 
 }
+.box{
+    display: flex;
+    flex-direction: row;
+    padding:.5em
+}
+#weather-card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    // margin:5px;
+    // padding:5px;
+}
 .container{ 
     display: flex;
     flex-direction: column;
     padding: 0.5em;
     box-shadow: 2px 2px #69c8cf;
-    margin-top: 15px;
-    background-color:#69c8cf ;
+    margin:10px;
+    background-color:#69c8cf;
+    border-radius: 5px;
+}
+.image-container{
+    display: flex;
+    // padding:.5em;
+    flex-direction: column;
 }
 h1{
     margin: .5em;
@@ -21,19 +39,32 @@ h1{
     font-size: 3em;
     text-shadow: 4px 4px #124b4f;
 }
+h2{
+    margin:0px
+}
+h3{ 
+    margin:3px;
+    padding:3px;
+}
 label{
     font-weight: 500;
     color: white;
 
 }
-
+#attribution{
+    margin:10px;
+    font-size: .6em
+}
+#countdown{
+    text-align: center;
+    margin:10PX;
+}
 #destination{
     border-radius: 5px;
     margin-top: 5px;
     margin-bottom: 5px;
     display: flex;
     color:grey
-    
 }
 #user-input{
     display: flex;
@@ -53,4 +84,35 @@ label{
 }
 #submit{
     border-radius: 7px;
+}
+#weather-details{
+    padding: 1em;
+}
+
+@media only screen and (min-width: 900px) {
+    #results-wrapper{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: minmax(200px, auto);
+        grid-template-areas: "xx yy"
+    }
+    #trip-info{
+        grid-area: "yy";
+    }
+    #image{
+        grid-area: "xx";
+    }
+    .image-container{
+        max-width:500px;
+        
+    }
+    #trip-info{
+        display:flex;
+        flex-direction: column;
+        justify-content: center;
+        
+    }
+    .container{
+        margin:20px
+    }
 }

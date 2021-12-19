@@ -8,7 +8,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "start": "node src/server/server.js",
+    "start": "node src/server/start.js",
     "build-prod": "webpack --config webpack.prod.js",
     "build-dev": "npm run start & webpack-dev-server  --config webpack.dev.js --open"
   },
@@ -25,9 +25,9 @@
     "form-data": "^2.3.3",
     "node-fetch": "^2.6.0",
     "regenerator-runtime": "^0.13.3",
+    "request": "^2.88.2",
     "webpack": "^4.35.3",
-    "webpack-cli": "^3.3.5",
-    "workbox-webpack-plugin": "^5.1.3"
+    "webpack-cli": "^3.3.5"
   },
   "devDependencies": {
     "@babel/core": "^7.16.0",
@@ -46,7 +46,9 @@
     "postcss": "^8.2.15",
     "sass-loader": "^7.3.1",
     "style-loader": "^0.23.1",
+    "supertest": "^6.1.6",
     "terser-webpack-plugin": "^4.2.3",
-    "webpack-dev-server": "^3.7.2"
+    "webpack-dev-server": "^3.7.2",
+    "workbox-webpack-plugin": "^5.1.4"
   }
 }
