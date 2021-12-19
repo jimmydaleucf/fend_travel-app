@@ -11,6 +11,9 @@ const res = require("express/lib/response");
 // Start up an instance of app
 const app = express();
 
+module.exports = app;
+// export default app 
+
 /* Dependencies */
 /* Middleware*/
 //Here we are configuring express to use body-parser as middle-ware.
@@ -51,15 +54,15 @@ app.use((req, res, next) => {
 });
 
 // Spin up the server
-const port = 8081;
-const server = app.listen(port, listening);
-function listening() {
-  console.log(`server up and running on localhost:${port}`); // Callback to debug//
-}
+// const port = 8081;
+// const server = app.listen(port, listening);
+// function listening() {
+//   console.log(`server up and running on localhost:${port}`); // Callback to debug//
+// }
 
 // Setup empty JS object to act as endpoint for all routes
 // coordData = {}
-projectData ={}
+let projectData ={}
 
 // Initialize all route with a callback function//
 // app.get("/getCoords", getData)
@@ -87,5 +90,10 @@ function addData(req, res) {
   console.log(newData);
   console.log(projectData.location)
   res.send(projectData);
+  res.sendStatus(200);
 }
-export{ addData }
+
+
+app.get('/test', async (req,res) => {
+  res.json({message: 'pass!'})
+})
