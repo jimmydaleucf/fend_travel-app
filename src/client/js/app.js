@@ -59,10 +59,19 @@ function processInfo(e) {
               icon: json.data[0].weather.icon,
               temp: json.data[0].temp,
               location: pic_destination,
+            }).then(function () {
+              Client.getPhoto().then(function (image_url) {
+                console.log(image_url);
+              });
             });
-            document.getElementById("weather-h3").innerText = "Current Weather";
+            document.getElementById("weather-h3").innerText = "Typical Weather";
+            // }).then (function(){
+            //     Client.getPhoto()
+          })
+          .then(function () {
             Client.updateUI();
           });
+        
       } else {
         console.log(Client.calcDate(tripDate, shortDate));
         alert("Please enter a valid travel date to continue");
