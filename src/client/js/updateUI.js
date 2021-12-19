@@ -8,7 +8,9 @@ const updateUI = async (url = "", image_url) => {
     // document.getElementById("image").innerHTML="<img src=\""
     document.getElementById("weather").innerText = allData.description;
     document.getElementById("temp").innerText = allData.temp + "°F";
-    document.getElementById("weather-card").className="container"
+    document.getElementById("weather-card").className="container";
+    document.getElementById("results-wrapper").className="container";
+
     const icon = allData.icon;
     document.getElementById(
       "icon"

@@ -24,22 +24,33 @@
 
 
 <!-- <h2>Trip Info:</h2> -->
-<h3 id= "countdown">Your trip to Tampa is in 6 days!</h3>
+<div class="" id="results-wrapper">
+    <div id="trip-info">
+<h3 id= "countdown"></h3>
 <div class="box" id="weather-card">
-    <h2 id="weather-h3">Typical Weather</h2>
+    <h2 id="weather-h3"></h2>
     <div id="weather-wrapper" class="box">
-        <div class="" id= "icon"><img src="src/client/media/icons/c02d.png"></div>
+        <div class="" id= "icon"><img src=""></div>
         <div id="weather-details">
-            <div id = "weather">Partly Cloudy</div>
-            <div id="temp">72F</div>
+            <div id = "weather"></div>
+            <div id="temp"></div>
         </div>
     </div>
 </div>
-
-<div class="image-container" id="image"><img id="dest-image" src="https://pixabay.com/get/g6b0459dd605a52e941af62617e49b1293fa66589c8e7aaa2243ec388d94f7996a94dab7251cfe9fdd77f2dada647cafd_640.jpg"></div>
+</div>
+<div class="image-container" id="image"><img id="dest-image" src=""></div>
 <div id=attribution></div>
-<!-- </div> -->
+</div>
 
     <script type=“javascript” src=“../../../dist/main.js></script>
+    <script>
+ // Check that service workers are supported
+ if ('serviceWorker' in navigator) {
+     // Use the window load event to keep the page load performant
+     window.addEventListener('load', () => {
+         navigator.serviceWorker.register('/service-worker.js');
+     });
+ }
+</script>
 </body>
 </html>
