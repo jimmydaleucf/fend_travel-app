@@ -32,13 +32,13 @@ app.get("/", function (req, res) {
 });
 
 app.get('/image', (req,res) => {
+  console.log('GETTING IMAGE');
   request(
     {url: `https://pixabay.com/api/?key=24887647-41a0d54ffd7c876db41d2b5f2&q=${projectData.location}`},
     (error, response, body) => {
       if (error || response.statusCode !== 200) {
         return res.status(500).json({ type: 'error', message: err.message });
       }
-
       res.json(JSON.parse(body));
     }
   )
@@ -69,7 +69,7 @@ app.get("/all", getAll)
 
 // Callback function to complete GET '/getAll'//
 function getAll(req, res) {
-  console.log('GET')
+  // console.log('GET')
   res.send(projectData);
 };
 

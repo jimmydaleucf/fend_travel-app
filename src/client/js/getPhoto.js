@@ -1,28 +1,18 @@
-let pixURL= "https://pixabay.com/api/?key="
-const pixabay_key= "24887647-41a0d54ffd7c876db41d2b5f2";
-
-
-const shortDest = (destination)=>{
-    console.log(destination);
-    const pic_destination = destination.replace(/\s+/g, "");
-    console.log(pic_destination);
-    return pic_destination;
-};
-
-
-
-
-const getPhoto = async(pic_destination, pixURL, pixabay_key)=> {
-  console.log(pic_destination);
+const getPhoto = async(url="")=> {
   const pic_response = await fetch(
-    pixURL + pixabay_key + "&q=" + `${pic_destination}`
+    "http://localhost:8081/image"
   );
 try {
-    const data = await pic_response.json();
-    return data;
+    const image = await pic_response.json();
+    console.log(image);
+    const image_url = image.hits[0].webformatURL;
+    console.log(image_url);
+    document.getElementById("dest-image").src = image_url;
+
+    return image_url;
   } catch (error) {
     console.log("error", error);
   }
 };
 
-export {shortDest, getPhoto}
+export {getPhoto}

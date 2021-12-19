@@ -24,5 +24,4 @@ export {
   updateUI,
   countdown,
   getPhoto,
-  shortDest,
 };

@@ -1,3 +1,5 @@
+import { getPhoto } from "..";
+
 /* Global Variables */
 let baseURL = "http://api.geonames.org/searchJSON?q=";
 const geonames_user_key = "jimmydaleucf";
@@ -21,23 +23,32 @@ function processInfo(e) {
       const dateDiff = Client.calcDate(tripDate, shortDate);
       const pic_destination = destination.replace(/\s+/g, "");
       console.log(pic_destination);
-    //   console.log(dateDiff);
+      Client.countdown(dateDiff, destination);
       //   const roundedDate = Math.ceil(dateDiff);
       //   console.log(roundedDate);
       if (dateDiff > 7) {
         console.log("Grabbing future weather conditions");
-        Client.getFutureWeather(longitude, lattitude).then(function (json) {
-          console.log(pic_destination);
+        console.log(pic_destination)
+        Client.getFutureWeather(longitude, lattitude)
+        .then(function (json) {
           Client.postData("http://localhost:8081/addData", {
             //posts the weather data received to the server
             description: json.data[15].weather.description,
             icon: json.data[15].weather.icon,
             temp: json.data[15].temp,
             location: pic_destination,
+          }).then (function(){
+              Client.getPhoto().then(function (image_url) {
+                console.log(image_url);
+              });
           });
           document.getElementById("weather-h3").innerText = "Typical Weather";
-          Client.updateUI();
-        });
+        // }).then (function(){
+        //     Client.getPhoto()
+        }).then (function(){
+            Client.updateUI();
+        })
+        
       } else if (dateDiff > -1 && dateDiff <= 7) {
         console.log("Grabbing current weather conditions");
         Client.getCurrentWeather(longitude, lattitude) //calls weather API
@@ -47,6 +58,7 @@ function processInfo(e) {
               description: json.data[0].weather.description,
               icon: json.data[0].weather.icon,
               temp: json.data[0].temp,
+              location: pic_destination,
             });
             document.getElementById("weather-h3").innerText = "Current Weather";
             Client.updateUI();
