@@ -88,3 +88,4 @@ function addData(req, res) {
   console.log(projectData.location)
   res.send(projectData);
 }
+export{ addData }
