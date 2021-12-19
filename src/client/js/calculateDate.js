@@ -1,14 +1,8 @@
-const calcDate = (tripDate, shortDate) => {
-    // console.log("Trip Date= " + tripDate);
-    // console.log("Short Date= " + shortDate);
+const calcDate = (tripDate, shortDate) => {//this function calculates how many days from today the user's departure date is
     var timeDiff = tripDate - shortDate;
-    // console.log("Printing TimeDiff")
-    // console.log(timeDiff)
-    const timeDiffDays = timeDiff/86400000;
+    const timeDiffDays = timeDiff/86400000;//convert difference (in milliseconds) to days
     const roundedDate = Math.ceil(timeDiffDays);
-    return roundedDate
-    // console.log(timeDiffDays);
-    
+    return roundedDate    
 };
 
 export {calcDate}

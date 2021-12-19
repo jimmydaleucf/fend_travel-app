@@ -3,18 +3,10 @@ const updateUI = async (url = "", image_url) => {
   try {
     const allData = await request.json();
     console.log(allData);
-    // const image_url= image.hits[0].pageURL;
-    // console.log(image_url);
-    // document.getElementById("image").innerHTML="<img src=\""
-    document.getElementById("weather").innerText = allData.description;
-    document.getElementById("temp").innerText = allData.temp + "°F";
-    document.getElementById("weather-card").className="container";
-    document.getElementById("results-wrapper").className="container";
-
-    const icon = allData.icon;
-    document.getElementById(
-      "icon"
-    ).innerHTML = `<img src=\"src/client/media/icons/${icon}.png\" height= \"90\" width=\"90\">`;
+    document.getElementById("weather").innerText = allData.description; //adds weather description to UI
+    document.getElementById("temp").innerText = allData.temp + "°F"; //adds temp data to UI
+    document.getElementById("weather-card").className = "container"; //changes class of card to container for that "card look"
+    document.getElementById("results-wrapper").className = "container"; //changes class of card to container for that "card look"
   } catch (error) {
     console.log("error", error);
   }

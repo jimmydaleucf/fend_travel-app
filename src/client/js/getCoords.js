@@ -1,5 +1,5 @@
 
-const getCityCoords = async (baseURL, destination, geonames_user_key) => {
+const getCityCoords = async (baseURL, destination, geonames_user_key) => {//grabs the coords of the target city to submit to Weatherbit API
   const res = await fetch(
     baseURL + destination + "&maxRows=1&username=" + geonames_user_key
   );

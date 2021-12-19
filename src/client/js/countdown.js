@@ -1,4 +1,4 @@
-const countdown = (dateDiff, destination) => {
+const countdown = (dateDiff, destination) => {//determines verbiage and inserts correct countdown sentence into the UI. 
   if (dateDiff == 1) {
     document.getElementById("countdown").innerText =
       dateDiff + ` day until your trip to ${destination}!`;
@@ -9,7 +9,7 @@ const countdown = (dateDiff, destination) => {
     document.getElementById(
       "countdown"
     ).innerText = `You leave for ${destination} today!`;
-  } else {
+  } else {//for dates that are in the past
     document.getElementById("countdown").innerText = "";
   }
 };
