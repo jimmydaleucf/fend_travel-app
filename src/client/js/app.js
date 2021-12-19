@@ -20,24 +20,23 @@ function processInfo(e) {
       const lattitude = data.geonames[0].lat;
       const dateDiff = Client.calcDate(tripDate, shortDate);
       console.log(dateDiff);
-      Client.countdown(dateDiff);
-    //   const roundedDate = Math.ceil(dateDiff);
-    //   console.log(roundedDate);
-      if (dateDiff >7) {
+      console.log(destination);
+      Client.countdown(dateDiff, destination);
+      //   const roundedDate = Math.ceil(dateDiff);
+      //   console.log(roundedDate);
+      if (dateDiff > 7) {
         console.log("Grabbing future weather conditions");
-        Client.getFutureWeather(longitude,lattitude)
-        .then(function (json){
+        Client.getFutureWeather(longitude, lattitude).then(function (json) {
           Client.postData("http://localhost:8081/addData", {
-              //posts the weather data received to the server
-              description: json.data[15].weather.description,
-              icon: json.data[15].weather.icon,
-              temp: json.data[15].temp,
-            });
-            document.getElementById('weather-h3').innerText="Typical Weather";
-            Client.updateUI();
+            //posts the weather data received to the server
+            description: json.data[15].weather.description,
+            icon: json.data[15].weather.icon,
+            temp: json.data[15].temp,
+          });
+          document.getElementById("weather-h3").innerText = "Typical Weather";
+          Client.updateUI();
         });
-      } else if (
-        dateDiff > -1 && dateDiff<= 7) {
+      } else if (dateDiff > -1 && dateDiff <= 7) {
         console.log("Grabbing current weather conditions");
         Client.getCurrentWeather(longitude, lattitude) //calls weather API
           .then(function (json) {
@@ -50,12 +49,10 @@ function processInfo(e) {
             document.getElementById("weather-h3").innerText = "Current Weather";
             Client.updateUI();
           });
-
-      } else{
-          console.log(Client.calcDate(tripDate, shortDate))
-          alert("Please enter a valid travel date to continue")
+      } else {
+        console.log(Client.calcDate(tripDate, shortDate));
+        alert("Please enter a valid travel date to continue");
       }
-      
     });
     
 }
