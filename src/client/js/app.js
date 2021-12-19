@@ -61,7 +61,6 @@ function processInfo(e) {
               location: pic_destination,
             }).then(function () {
               Client.getPhoto().then(function (image_url) {
-                console.log(image_url);
               });
             });
             document.getElementById("weather-h3").innerText = "Typical Weather";

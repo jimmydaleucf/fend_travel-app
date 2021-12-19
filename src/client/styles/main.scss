@@ -8,11 +8,13 @@ body{
 }
 .box{
     display: flex;
+    flex-direction: row;
     padding:.5em
 }
-#weather-card.box{
+#weather-card{
     display: flex;
     flex-direction: column;
+    align-items: center;
     margin:5px;
     padding:5px;
 }
@@ -21,8 +23,13 @@ body{
     flex-direction: column;
     padding: 0.5em;
     box-shadow: 2px 2px #69c8cf;
-    margin-top: 15px;
-    background-color:#69c8cf ;
+    // // margin-top: 15px;
+    background-color:#69c8cf;
+}
+.image-container{
+    display: flex;
+    padding:.5em;
+    flex-direction: column;
 }
 h1{
     margin: .5em;
@@ -43,8 +50,14 @@ label{
     color: white;
 
 }
+#attribution{
+    margin:10px;
+    font-size: .6em
+}
 #countdown{
-    text-align: center;}
+    text-align: center;
+    margin:10PX;
+}
 #destination{
     border-radius: 5px;
     margin-top: 5px;
@@ -74,4 +87,8 @@ label{
 }
 #weather-details{
     padding: 1em;
+}
+
+@media only screen and (min-width: 900px) {
+
 }
