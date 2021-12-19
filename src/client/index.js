@@ -5,6 +5,7 @@ import { postData } from "./js/postData.js";
 import { getCityCoords } from "./js/getCoords.js";
 import { updateUI } from "./js/updateUI.js";
 import { countdown } from "./js/countdown.js";
+import { getPhoto, shortDest } from "./js/getPhoto.js";
 
 document.getElementById("submit").addEventListener("click", processInfo);
 
@@ -19,7 +20,9 @@ export {
   getFutureWeather,
   getCurrentWeather,
   postData,
-  getCityCoords, 
-  updateUI, 
-  countdown
+  getCityCoords,
+  updateUI,
+  countdown,
+  getPhoto,
+  shortDest,
 };

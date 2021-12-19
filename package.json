@@ -25,6 +25,7 @@
     "form-data": "^2.3.3",
     "node-fetch": "^2.6.0",
     "regenerator-runtime": "^0.13.3",
+    "request": "^2.88.2",
     "webpack": "^4.35.3",
     "webpack-cli": "^3.3.5",
     "workbox-webpack-plugin": "^5.1.3"

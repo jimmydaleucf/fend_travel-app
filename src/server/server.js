@@ -5,6 +5,8 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const database = require("mime-db");
+const request = require("request"); 
+const res = require("express/lib/response");
 
 // Start up an instance of app
 const app = express();
@@ -18,11 +20,34 @@ app.use(bodyParser.json());
 app.use(cors());
 // Initialize the main project folder
 app.use(express.static("dist"));
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  next();
+});
 
 
 app.get("/", function (req, res) {
   res.sendFile("dist/index.html");
   // res.sendFile(path.resolve('src/client/views/index.html')) //{{removing as we now need to reference the dist folder file}}
+});
+
+app.get('/image', (req,res) => {
+  request(
+    {url: `https://pixabay.com/api/?key=24887647-41a0d54ffd7c876db41d2b5f2&q=${projectData.location}`},
+    (error, response, body) => {
+      if (error || response.statusCode !== 200) {
+        return res.status(500).json({ type: 'error', message: err.message });
+      }
+
+      res.json(JSON.parse(body));
+    }
+  )
+});
+
+
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  next();
 });
 
 // Spin up the server
@@ -56,25 +81,10 @@ function addData(req, res) {
     description: req.body.description,
     icon: req.body.icon,
     temp: req.body.temp,
+    location: req.body.location
   };
   projectData = newData;
   console.log(newData);
+  console.log(projectData.location)
   res.send(projectData);
 }
-
-// app.post('/addCoords', addCoords);
-
-// console.log("POST")
-
-// function addCoords(req,res) {
-//     // console.log(req.body);
-//     newEntry = {
-//       lon: req.body.lon,
-//       lat: req.body.lat,
-//       country: req.body.country
-//     };  
-//     console.log(newEntry);
-//     coordData = newEntry
-//     res.send(coordData)
-//     // console.log(coordData)
-// }
