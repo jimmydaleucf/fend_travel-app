@@ -1,7 +1,7 @@
 import { getPhoto } from "..";
 
 /* Global Variables */
-let baseURL = "https://api.geonames.org/searchJSON?q=";
+let baseURL = "http://api.geonames.org/searchJSON?q=";
 const geonames_user_key = "jimmydaleucf";
 const destination = document.getElementById("destination").value;
 
