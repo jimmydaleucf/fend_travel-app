@@ -2,7 +2,7 @@ import { getPhoto } from "..";
 
 /* Global Variables */
 let baseURL = "http://api.geonames.org/searchJSON?q=";
-const geonames_user_key = "jimmydaleucf";
+const geonames_user_key = "jimmydaleucf/";
 const destination = document.getElementById("destination").value;
 
 //Once the user inputs a city and date and then hits "submit" , this function will kickoff//
